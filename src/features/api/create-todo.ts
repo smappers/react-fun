@@ -9,7 +9,7 @@ export async function createTodo(todoText: string) {
   const todos = JSON.parse(todosString);
 
   const newTodo = {
-    id: todos.length + 1,
+    id: crypto.randomUUID(),
     text: todoText,
     completed: false,
   };
