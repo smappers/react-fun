@@ -16,7 +16,7 @@ function TodoList() {
 
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodoText, setNewTodoText] = useState("");
-  const [newTodoEffort, setNewTodoEffort] = useState("");
+  const [newTodoEffort, setNewTodoEffort] = useState<Todo["effort"] | "">("");
 
   const listItems = todos.map((todo) => (
     <TodoItem
@@ -70,7 +70,9 @@ function TodoList() {
             value={newTodoText}
           />
           <select
-            onChange={(e) => setNewTodoEffort(e.target.value)}
+            onChange={(e) =>
+              setNewTodoEffort(e.target.value as Todo["effort"] | "")
+            }
             className="todo-list__effort-select"
             value={newTodoEffort}
           >
