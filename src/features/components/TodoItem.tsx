@@ -1,3 +1,5 @@
+import "./TodoItem.css";
+
 interface TodoItemProps {
   text: string;
   completed: boolean;
@@ -7,12 +9,14 @@ interface TodoItemProps {
 
 function TodoItem({ text, completed, onChange, deleteItem }: TodoItemProps) {
   return (
-    <div>
-      <label>
+    <div className="todo">
+      <label className="todo__label">
         <input type="checkbox" checked={completed} onChange={onChange} />
         <span>{text}</span>
       </label>
-      <button onClick={deleteItem}>Delete</button>
+      <button className="todo__button" onClick={deleteItem}>
+        Delete
+      </button>
     </div>
   );
 }

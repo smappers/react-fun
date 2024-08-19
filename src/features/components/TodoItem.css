@@ -1,0 +1,14 @@
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo__label {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo__button {
+  padding: 0.25rem 0.5rem;
+}

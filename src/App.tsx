@@ -5,7 +5,9 @@ function App() {
   return (
     <>
       <h1>React fun</h1>
-      <TodoList />
+      <div className="page-content">
+        <TodoList />
+      </div>
     </>
   );
 }

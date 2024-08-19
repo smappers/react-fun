@@ -5,6 +5,7 @@ import { getTodos } from "../api/get-todos";
 import type { Todo } from "../../types/Todo";
 import { deleteTodo } from "../api/delete-todo";
 import { updateTodo } from "../api/update-todo";
+import "./TodoList.css";
 
 function TodoList() {
   useEffect(() => {
@@ -54,19 +55,20 @@ function TodoList() {
   }
 
   return (
-    <div>
+    <div className="todo-list">
       <h2>Todo List</h2>
       <div>
         <form onSubmit={handleAdd}>
           <input
+            className="todo-list__input"
             type="text"
             onChange={(e) => setNewTodoText(e.target.value)}
             value={newTodoText}
           />
-          <button>Add</button>
+          <button className="todo-list__button">Add</button>
         </form>
       </div>
-      {listItems}
+      <div className="todo-list__items">{listItems}</div>
     </div>
   );
 }
