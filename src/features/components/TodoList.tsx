@@ -44,7 +44,8 @@ function TodoList() {
     setTodos(updatedTodos);
   }
 
-  async function handleAdd() {
+  async function handleAdd(e: React.FormEvent) {
+    e.preventDefault();
     // add a new todo item to the list
     const updatedTodos = await createTodo(newTodoText);
     // update the todos state
@@ -56,12 +57,14 @@ function TodoList() {
     <div>
       <h2>Todo List</h2>
       <div>
-        <input
-          type="text"
-          onChange={(e) => setNewTodoText(e.target.value)}
-          value={newTodoText}
-        />
-        <button onClick={handleAdd}>Add</button>
+        <form onSubmit={handleAdd}>
+          <input
+            type="text"
+            onChange={(e) => setNewTodoText(e.target.value)}
+            value={newTodoText}
+          />
+          <button>Add</button>
+        </form>
       </div>
       {listItems}
     </div>
