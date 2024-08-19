@@ -16,6 +16,7 @@ function TodoList() {
 
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodoText, setNewTodoText] = useState("");
+  const [newTodoEffort, setNewTodoEffort] = useState("");
 
   const listItems = todos.map((todo) => (
     <TodoItem
@@ -47,11 +48,14 @@ function TodoList() {
 
   async function handleAdd(e: React.FormEvent) {
     e.preventDefault();
+    if (!newTodoText) return;
+    if (!newTodoEffort) return;
     // add a new todo item to the list
     const updatedTodos = await createTodo(newTodoText);
     // update the todos state
     setTodos(updatedTodos);
     setNewTodoText("");
+    setNewTodoEffort("");
   }
 
   return (
@@ -65,6 +69,18 @@ function TodoList() {
             onChange={(e) => setNewTodoText(e.target.value)}
             value={newTodoText}
           />
+          <select
+            onChange={(e) => setNewTodoEffort(e.target.value)}
+            className="todo-list__effort-select"
+            value={newTodoEffort}
+          >
+            <option value="">Select Effort</option>
+            <option value="xs">Extra Small</option>
+            <option value="s">Small</option>
+            <option value="m">Medium</option>
+            <option value="l">Large</option>
+            <option value="xl">Extra Large</option>
+          </select>
           <button className="todo-list__button">Add</button>
         </form>
       </div>
