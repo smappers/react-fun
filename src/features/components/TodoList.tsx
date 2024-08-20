@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import TodoItem from "./TodoItem";
 import { createTodo } from "../api/create-todo";
 import { getTodos } from "../api/get-todos";
@@ -6,6 +6,12 @@ import type { Todo } from "../../types/Todo";
 import { deleteTodo } from "../api/delete-todo";
 import { updateTodo } from "../api/update-todo";
 import "./TodoList.css";
+
+const FILTER_MAP = {
+  All: () => true,
+  Active: (todo: Todo) => !todo.completed,
+  Completed: (todo: Todo) => todo.completed,
+};
 
 function TodoList() {
   useEffect(() => {
@@ -17,8 +23,11 @@ function TodoList() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodoText, setNewTodoText] = useState("");
   const [newTodoEffort, setNewTodoEffort] = useState<Todo["effort"] | "">("");
+  const [filter, setFilter] = useState<keyof typeof FILTER_MAP>("All");
 
-  const listItems = todos.map((todo) => (
+  const filteredTodos = todos.filter(FILTER_MAP[filter]);
+
+  const listItems = filteredTodos.map((todo) => (
     <TodoItem
       key={todo.id}
       text={todo.text}
@@ -85,6 +94,23 @@ function TodoList() {
           </select>
           <button className="todo-list__button">Add</button>
         </form>
+      </div>
+      <div>
+        <button className="todo-list__button" onClick={() => setFilter("All")}>
+          All
+        </button>
+        <button
+          className="todo-list__button"
+          onClick={() => setFilter("Active")}
+        >
+          Active
+        </button>
+        <button
+          className="todo-list__button"
+          onClick={() => setFilter("Completed")}
+        >
+          Completed
+        </button>
       </div>
       <div className="todo-list__items">{listItems}</div>
     </div>
