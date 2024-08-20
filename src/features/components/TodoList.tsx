@@ -51,7 +51,7 @@ function TodoList() {
     if (!newTodoText) return;
     if (!newTodoEffort) return;
     // add a new todo item to the list
-    const updatedTodos = await createTodo(newTodoText);
+    const updatedTodos = await createTodo(newTodoText, newTodoEffort);
     // update the todos state
     setTodos(updatedTodos);
     setNewTodoText("");

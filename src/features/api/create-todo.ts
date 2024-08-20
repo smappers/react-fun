@@ -1,5 +1,7 @@
+import { Todo } from "../../types/Todo";
+
 // Create Todo API
-export async function createTodo(todoText: string) {
+export async function createTodo(todoText: string, todoEffort: Todo["effort"]) {
   // Local storage is just being used as a temporary storage solution
   if (!window.localStorage) return [];
   const todosString = window.localStorage.getItem("todos");
@@ -11,6 +13,7 @@ export async function createTodo(todoText: string) {
   const newTodo = {
     id: crypto.randomUUID(),
     text: todoText,
+    effort: todoEffort,
     completed: false,
   };
 
