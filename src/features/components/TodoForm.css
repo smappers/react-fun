@@ -1,0 +1,7 @@
+.todo-list__button {
+  padding: 0.25rem 0.5rem;
+}
+
+.todo-list__input, .todo-list__effort-select {
+  padding: 0.25rem;
+}
