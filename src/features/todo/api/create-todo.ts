@@ -1,4 +1,4 @@
-import { Todo } from "../../types/Todo";
+import { Todo } from "../../../types/Todo";
 
 // Create Todo API
 export async function createTodo(todoText: string, todoEffort: Todo["effort"]) {

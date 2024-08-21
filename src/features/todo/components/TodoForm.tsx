@@ -1,5 +1,5 @@
-import type { Todo } from "../../types/Todo";
 import { useState } from "react";
+import type { Todo } from "@/types/Todo";
 import "./TodoForm.css";
 
 function TodoForm({

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import type { Todo } from "@/types/Todo";
+import {
+  createTodo,
+  getTodos,
+  deleteTodo,
+  updateTodo,
+} from "@/features/todo/api";
 import TodoItem from "./TodoItem";
-import { createTodo } from "../api/create-todo";
-import { getTodos } from "../api/get-todos";
-import type { Todo } from "../../types/Todo";
-import { deleteTodo } from "../api/delete-todo";
-import { updateTodo } from "../api/update-todo";
 import "./TodoList.css";
 import TodoForm from "./TodoForm";
 

@@ -1,4 +1,4 @@
-import { Todo } from "../../types/Todo";
+import { Todo } from "../../../types/Todo";
 
 // Update Todo API
 export async function updateTodo(id: string, todoItem: Todo) {

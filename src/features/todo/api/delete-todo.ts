@@ -1,4 +1,4 @@
-import { Todo } from "../../types/Todo";
+import { Todo } from "../../../types/Todo";
 
 // Delete Todo API
 export async function deleteTodo(id: string) {
